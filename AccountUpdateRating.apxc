@@ -1,0 +1,13 @@
+public class AccountUpdateRating implements Queueable{
+	public void execute(QueueableContext ctx){
+		AccountService.updateRating('Cold');
+		
+		System.debug(ctx.getJobId()); //to get Job id
+		getJobStatus(ctx.getJobId());
+		
+	}
+	public void getJobStatus(String id){
+        list<AsyncApexJob> jobStatus=[SELECT id, Status from AsyncApexJob where id=:id];
+        System.debug(jobStatus);
+	}
+}

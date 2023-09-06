@@ -1,0 +1,10 @@
+public class AccountService{
+	public static void updateRating(String rating){
+		List<Account> accList=[Select Name,rating from Account where rating=NULL];
+		
+		for(Account accRecord:accList){
+			accRecord.Rating='Cold';
+		}
+		update accList;
+	}
+}
